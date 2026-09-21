@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda del DOM</title>
+    <!-- Estilos y JS -->
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>La tienda del DOM</h1>
+        <input type="search" id="buscador" placeholder="Buscar productos...">
+        <!-- Botón para abrir el carrito -->
+        <button id="btn-abrir-carrito" type="button">
+            Carrito (<span id="contador-carrito">0</span>)
+        </button>
+    </header>
+
+    <main>
+        <!-- Contenedor para botones de categorías -->
+        <nav id="filtros">
+            <!-- Botones para filtrar articulos -->
+            <button class="btn-filtro activo" data-categoria="todos">Todos</button>
+            <button class="btn-filtro" data-categoria="teclados">Teclados</button>
+            <button class="btn-filtro" data-categoria="ratones">Ratones</button>
+            <button class="btn-filtro" data-categoria="monitores">Monitores</button>
+        </nav>
+
+        <!-- Tarjetas del catalogo (JS se encarga de esto) -->
+        <div id="catalogo"></div>
+    </main>
+
+    <!-- Panel lateral del carrito -->
+    <aside id="panel-carrito">
+        <button id="btn-cerrar-carrito" type="button">✕</button>
+        <h2>Tu cesta</h2>
+        <ul id="articulos-carrito"></ul>
+        
+        <div class="pie-carrito">
+            <p>Total: <span id="precio-carrito">0.00€</span></p>
+            <button id="btn-vaciar" type="button">Vaciar</button>
+        </div>
+    </aside>
+</body>
+</html>
