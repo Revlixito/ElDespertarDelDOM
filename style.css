@@ -1,0 +1,140 @@
+/* 1. Variables globales (colores claritos)*/
+:root {
+  --bg-color: #f4f6f9;
+  --card-bg: #ffffff;
+  --text-color: #1a1a1a;
+  --text-muted: #666666;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --border-color: #e5e7eb;
+}
+
+/* Reset basico (Aportacion de gemini), sirve para eliminar los estilos agregados por defecto de los navegadores */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--card-bg);
+  border-bottom: 1px solid var(--border-color);
+  gap: 1rem;
+}
+
+
+/*usamos rem en vez de px para que sea dinamico
+  tambien damos estilo al header y lo ponemos en su lugar
+*/
+#buscador {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  width: 100%;
+  max-width: 300px;
+}
+
+#btn-abrir-carrito {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+#btn-abrir-carrito:hover {
+  background-color: var(--primary-hover);
+}
+
+/*Aplicamos estilos al contenedor principal, el main, que es donde se encuentra toda la info importante*/
+main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+#filtros {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.btn-filtro {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.btn-filtro.activo {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+}
+
+/* La cuadricula donde con js crearemos los productos */
+#catalogo {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+/*Damos forma al aside y ponemos la info del carrito dentro de este*/
+#panel-carrito {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 350px;
+  max-width: 90vw;
+  height: 100vh;
+  background-color: var(--card-bg);
+  box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  
+  /* ESTADO POR DEFECTO: Escondido a la derecha */
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+/* ESTADO ABIERTO: Cuando JS añada esta clase, se deslizará a la vista */
+#panel-carrito.abierto {
+  transform: translateX(0);
+}
+
+#btn-cerrar-carrito {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+#articulos-carrito {
+  list-style: none;
+  flex-grow: 1;
+  overflow-y: auto;
+  margin: 1rem 0;
+}
+
+.pie-carrito {
+  border-top: 1px solid var(--border-color);
+  padding-top: 1rem;
+}
+
