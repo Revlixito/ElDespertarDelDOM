@@ -5,6 +5,8 @@
 * **Partes asistidas con IA:**
   * **Corrección de errores del HTML:** Revisión de la estructura inicial en el cuerpo y organizar la jerarquía de botones).
   * **Estructura y diseño CSS:** Sugerencias para el reseteo de estilos, el diseño responsivo del catálogo mediante CSS Grid y el sistema de apertura/cierre del panel lateral.
+  * **Desarrollo de JS** El index de los productos por perez, y la estructura de creacion para cada tarjeta (producto)
+  simplemente por que era bastante tedioso hacer eso a mano, correccion de errores en los botones de filtros, que se seleccionaban pero no filtraban.
 * **Prompts reales relevantes:**
   1. *"bien asi?? [aqui es donde pegue mi codigo inicial] dime si algo esta mal, el porque y dime como solucionarlo"*
   2. *"vale, vamos a darle un poco dde estilo, dime como deberia de empezar"*
@@ -15,6 +17,8 @@
 * **Qué escribí / ajusté a mano:**
   * El esqueleto inicial del HTML y la semántica de los identificadores.
   * La adaptación de los estilos a mis necesidades y los comentarios explicativos en el archivo `style.css`.
+  * El funcionamiento de apertura y cierre del carrito de la compra
+
 
 ## Autopsia
 
