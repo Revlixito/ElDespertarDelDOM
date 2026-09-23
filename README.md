@@ -1,24 +1,30 @@
-# La tienda del DOM (Primera entrega de Desarrollo Web)
+# La tienda del DOM (Entrega final de Desarrollo Web)
 
 ## Uso de IA
+
 * **Herramienta utilizada:** Gemini (Google).
 * **Partes asistidas con IA:**
-  * **Corrección de errores del HTML:** Revisión de la estructura inicial en el cuerpo y organizar la jerarquía de botones).
-  * **Estructura y diseño CSS:** Sugerencias para el reseteo de estilos, el diseño responsivo del catálogo mediante CSS Grid y el sistema de apertura/cierre del panel lateral.
-  * **Desarrollo de JS** El index de los productos por perez, y la estructura de creacion para cada tarjeta (producto)
-  simplemente por que era bastante tedioso hacer eso a mano, correccion de errores en los botones de filtros, que se seleccionaban pero no filtraban.
+  * **Estructura y diseño CSS:** Prácticamente obra completa de la IA (variables, reseteo, flexbox, CSS Grid y el sistema animado del carrito), ya que no me acordaba de casi nada de CSS y necesitaba una base visual sólida.
+  * **Corrección de errores del HTML:** Revisión inicial de etiquetas, jerarquía y accesibilidad semántica.
+  * **Generación de HTML dinámico:** La creación de las tarjetas del catálogo y la estructura de los ítems dentro del carrito (`<li>` con botones de sumar, restar y eliminar) fue generada con IA para ahorrar tiempo, ya que picar esos bloques a mano era un proceso tedioso y repetitivo.
+  * **Lógica del carrito y bonus:** Implementación de la gestión del estado del carrito, conexión del buscador, eventos de teclado y casi todo el desarrollo del modo oscuro con Custom Properties.
+  * **Organización del proyecto:** La IA me ayudó a darle orden y forma a la estructura de `app.js` para que el flujo fuera lógico (estado, selectores, renderizado, lógica, eventos e inicialización).
+  * **Formato del README:** Uso de la IA para limpiar el documento, corregir faltas de ortografía (tildes, comas, puntos), mejorar la claridad de la redacción y ajustar la indentación de Markdown.
 * **Prompts reales relevantes:**
-  1. *"bien asi?? [aqui es donde pegue mi codigo inicial] dime si algo esta mal, el porque y dime como solucionarlo"*
+  1. *"bien asi?? [pegué mi código inicial] dime si algo esta mal, el porque y dime como solucionarlo"*
   2. *"vale, vamos a darle un poco dde estilo, dime como deberia de empezar"*
-* **Cómo verifiqué lo generado:**
-  * Inspeccioné el DOM en el navegador comprobando el modelo de caja con `box-sizing: border-box`.
-  * Probé manualmente la animación del carrito forzando la clase `.abierto` en el elemento `<aside>` desde el inspector para comprobar que la transición con `transform: translateX` funcionaba sin romper el flujo de la página.
-  * Consulté y verifiqué en detalle los conceptos que no recordaba o no conocía (la función `var()` para Custom Properties en `:root`, el porqué del uso de unidades relativas `rem` frente a `px`, y la utilidad de las variables).
+  3. *"const item = carrito.find(i => i.id === idProducto); aqui la funcion flecha que hace exactamente? no las entiendo del todo bien, iteran todo el rato o que?"*
+  4. *"¿por qué se usan las funciones flecha y cómo funciona exactamente reduce y find con dataset?"*
+* **Qué aprendí y qué interioricé de verdad:**
+  * **Funciones flecha (`=>`):** Al principio me confundían con los bucles o pensaba que solo servían para booleanos, pero ya las entiendo por completo: su retorno implícito sin llaves, el ámbito léxico de `this` frente a `function` tradicional, y cuándo conviene usar cada una.
+  * **Método `reduce()`:** Comprendí a fondo cómo sustituye a un bucle `for` tradicional mediante el acumulador (`acc`) y el elemento actual (`item`), evitando variables mutables fuera del ámbito.
+  * **Atributos `data-*` y `dataset`:** Entendí cómo desacoplar la lógica de JS del texto visible de la interfaz guardando valores fijos en el HTML (IDs, categorías, acciones como `"sumar"` o `"restar"`) y recuperándolos de forma nativa.
 * **Qué escribí / ajusté a mano:**
-  * El esqueleto inicial del HTML y la semántica de los identificadores.
-  * La adaptación de los estilos a mis necesidades y los comentarios explicativos en el archivo `style.css`.
-  * El funcionamiento de apertura y cierre del carrito de la compra
+  * La eliminación manual del bloque duplicado de filtros que rompía la consola tras revisar el feedback.
+  * La verificación en el navegador inspeccionando el modelo de caja, el evento `input` y los eventos de teclado (`Escape` y tecla `D`).
+  * Los comentarios detallados en el código de `app.js`: tras ordenar el script con ayuda de la IA, me puse a comentarlo yo mismo paso por paso para asegurar la legibilidad y confirmar que entiendo al 100% cada línea antes de entregar.
 
+---
 
 ## Autopsia
 
@@ -31,3 +37,8 @@
 * **La decisión:** Aplicar `rem` para los paddings, márgenes y tamaños del buscador y botones.
 * **Alternativa descartada:** Usar valores directos en píxeles (como `padding: 16px`).
 * **Por qué elegí esto:** Al principio los píxeles parecen más sencillos porque son un número exacto, pero son rígidos. Si un usuario cambia el tamaño de fuente predeterminado de su navegador por comodidad o problemas de vista, las medidas en `rem` se adaptan y crecen proporcionalmente, evitando que los botones o textos se corten o queden descuadrados.
+
+### 3. Delegación de eventos en listas dinámicas frente a listeners individuales
+* **La decisión:** Escuchar los eventos `click` en contenedores padre fijos (`#catalogo`, `#filtros`, `#articulos-carrito`) e identificar los elementos pulsados con `.closest()` y atributos `dataset`.
+* **Alternativa descartada:** Asignar un `addEventListener` a cada botón de añadir o eliminar cada vez que se renderizaba una tarjeta o un elemento de la lista.
+* **Por qué elegí esto:** Añadir listeners a elementos dinámicos que se destruyen y recrean (`innerHTML = ''`) genera fugas de memoria y obliga a reasociar eventos constantemente. La delegación de eventos centraliza la captura de interacciones en el padre sin importar cuántas veces cambie el contenido interno.
