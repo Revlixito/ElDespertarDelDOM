@@ -138,3 +138,62 @@ main {
   padding-top: 1rem;
 }
 
+/* Tarjeta que envuelve cada producto */
+.tarjeta-producto {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Control del tamaño de la imagen */
+.tarjeta-producto img {
+  width: 100%;
+  height: 200px;        /* Altura fija uniforme para todas */
+  object-fit: cover;    /* Evita que la foto se deforme o estire */
+  display: block;
+}
+
+/* Contenedor del texto y botón dentro de la tarjeta */
+.info-producto {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex-grow: 1;
+}
+
+.info-producto h3 {
+  font-size: 1.1rem;
+}
+
+.info-producto .descripcion {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.info-producto .precio {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--primary);
+  margin-top: auto;    /* Empuja el precio y botón al final */
+  padding-top: 0.5rem;
+}
+
+.btn-agregar {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+  border: none;
+  padding: 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+.btn-agregar:hover {
+  opacity: 0.85;
+}
+
