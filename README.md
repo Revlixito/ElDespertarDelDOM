@@ -42,3 +42,12 @@
 * **La decisión:** Escuchar los eventos `click` en contenedores padre fijos (`#catalogo`, `#filtros`, `#articulos-carrito`) e identificar los elementos pulsados con `.closest()` y atributos `dataset`.
 * **Alternativa descartada:** Asignar un `addEventListener` a cada botón de añadir o eliminar cada vez que se renderizaba una tarjeta o un elemento de la lista.
 * **Por qué elegí esto:** Añadir listeners a elementos dinámicos que se destruyen y recrean (`innerHTML = ''`) genera fugas de memoria y obliga a reasociar eventos constantemente. La delegación de eventos centraliza la captura de interacciones en el padre sin importar cuántas veces cambie el contenido interno.
+
+
+
+Como comentario de ultima hora, para ser la primera practica me voy muy contento y muy satisfecho
+ya que a lo mejor no hubiera sido capaz de haberlo hecho todo sin la IA, bueno, capaz seguro que 
+hubiera sido, pero no a la misma velocidad, pero lo bueno de la IA, es que las cosas que no entendia
+las he podido comprender y aprender en tiempo record, ya que era pedir la explicacion tecnica
+y el funcionamiento de las cosas, todo esto ya lo habia meencionado anteriormente, pero esto
+lo escribo como autocritica hacia mi mismo, siento que he aprendido mucho con este proyecto.
